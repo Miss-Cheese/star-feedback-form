@@ -1,24 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Star from './Star';
 
 function App() {
+
+  const [starHovered, setStarHovered] = useState(0)
+  const [feedbackValue, setFeedbackValue] = useState(0)
+  const [userMetName, setUserMetName] = useState("Vanessa")
+  
+
+  const starData = {
+    starHovered: starHovered,
+    setStarHovered: setStarHovered,
+    feedbackValue: feedbackValue,
+    setFeedbackValue: setFeedbackValue
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="feedback-section">
+      <h3>How relevant was your match with {userMetName}?</h3>
+      <p>Your feedback is private and will only be used to improve future matches</p>
+      <div className="star-row">
+        <Star starVal={1} starData={starData}/>
+        <Star starVal={2} starData={starData}/>
+        <Star starVal={3} starData={starData}/>
+        <Star starVal={4} starData={starData}/>
+        <Star starVal={5} starData={starData}/>
+      </div>
     </div>
   );
 }
